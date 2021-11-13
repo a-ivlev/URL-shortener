@@ -66,7 +66,7 @@ func (chr *ChiRouter) Redirect(w http.ResponseWriter, r *http.Request) {
 	rShortener.ShortLink = chi.URLParam(r, "short")
 
 	ipaddr := strings.Split(r.RemoteAddr, ":")
-	//lint:ignore SA1029 ignore this!
+	//nolint:staticcheck
 	ctx := context.WithValue(r.Context(), "IP_address", ipaddr[0])
 
 	getFullink, err := chr.hs.Redirect(ctx, handler.Shortener(rShortener))
@@ -89,14 +89,14 @@ func (Statistic) Render(w http.ResponseWriter, r *http.Request) error {
 func (chr *ChiRouter) Statistic(w http.ResponseWriter, r *http.Request) {
 	rShortener := Shortener{}
 	if err := render.Bind(r, &rShortener); err != nil {
-		//lint:ignore (errcheck) ignore this!
+		//nolint:errcheck
 		render.Render(w, r, ErrInvalidRequest(err))
 		return
 	}
 
 	statistic, err := chr.hs.GetStatisticList(r.Context(), rShortener.StatLink)
 	if err != nil {
-		//lint:ignore (errcheck) ignore this!
+		//nolint:errcheck
 		render.Render(w, r, ErrInvalidRequest(err))
 		return
 	}
