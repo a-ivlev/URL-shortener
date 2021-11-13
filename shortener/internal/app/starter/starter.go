@@ -1,7 +1,7 @@
 package starter
 
 import (
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
 	"context"
 	"sync"
 )

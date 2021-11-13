@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/redirectBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/repository/followingBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/repository/shortenerBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/shortenerBL"
 	"context"
 	"fmt"
 	"log"

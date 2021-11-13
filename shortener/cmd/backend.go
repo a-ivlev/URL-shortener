@@ -1,18 +1,19 @@
 package main
 
 import (
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/api/chiRouter"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/api/handler"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/api/server"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/redirectBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/repository/followingBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/repository/shortenerBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/starter"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/db/inmemoryDB"
 	"context"
 	"os"
 	"os/signal"
 	"sync"
+
+	"github.com/a-ivlev/URL-shortener/shortener/internal/api/chiRouter"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/api/handler"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/api/server"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/shortenerBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/starter"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/db/inmemoryDB"
 )
 
 func main() {

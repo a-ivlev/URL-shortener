@@ -1,7 +1,7 @@
 package inmemoryDB
 
 import (
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/repository/followingBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
 	"context"
 	"database/sql"
 	"errors"

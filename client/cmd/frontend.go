@@ -1,7 +1,7 @@
 package main
 
 import (
-	"CourseProjectBackendDevGoLevel-1/client/internal/handlers"
+	"github.com/a-ivlev/URL-shortener/client/internal/handlers"
 	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"

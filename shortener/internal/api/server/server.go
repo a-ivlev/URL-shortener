@@ -1,9 +1,9 @@
 package server
 
 import (
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/redirectBL"
-	"CourseProjectBackendDevGoLevel-1/shortener/internal/app/starter"
 	"context"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/shortener/internal/app/starter"
 	"log"
 	"net/http"
 	"time"
