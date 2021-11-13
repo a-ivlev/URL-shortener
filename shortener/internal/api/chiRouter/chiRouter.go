@@ -44,6 +44,7 @@ func (Shortener) Render(w http.ResponseWriter, r *http.Request) error {
 func (chr *ChiRouter) CreateShortener(w http.ResponseWriter, r *http.Request) {
 	rShortener := Shortener{}
 	if err := render.Bind(r, &rShortener); err != nil {
+		//nolint:errcheck
 		render.Render(w, r, ErrInvalidRequest(err))
 		return
 	}
@@ -71,6 +72,7 @@ func (chr *ChiRouter) Redirect(w http.ResponseWriter, r *http.Request) {
 
 	getFullink, err := chr.hs.Redirect(ctx, handler.Shortener(rShortener))
 	if err != nil {
+		//nolint:errcheck
 		render.Render(w, r, ErrInvalidRequest(err))
 		return
 	}
@@ -100,6 +102,6 @@ func (chr *ChiRouter) Statistic(w http.ResponseWriter, r *http.Request) {
 		render.Render(w, r, ErrInvalidRequest(err))
 		return
 	}
-
+	//nolint:errcheck
 	render.Render(w, r, Statistic(statistic))
 }
