@@ -12,9 +12,9 @@ import (
 )
 
 var t = template.Must(template.New("homePage.html").Funcs(funcMap).ParseFiles(
-	"client/web/homePage.html",
-	"client/web/head.html",
-	"client/web/footer.html",
+	"web/homePage.html",
+	"web/head.html",
+	"web/footer.html",
 ))
 
 type FullLink struct {

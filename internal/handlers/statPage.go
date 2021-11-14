@@ -14,9 +14,9 @@ import (
 )
 
 var ts = template.Must(template.New("statPage.html").Funcs(funcMap).ParseFiles(
-	"client/web/statPage.html",
-	"client/web/head.html",
-	"client/web/footer.html",
+	"web/statPage.html",
+	"web/head.html",
+	"web/footer.html",
 ))
 
 type StatLink struct {
