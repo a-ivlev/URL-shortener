@@ -8,10 +8,7 @@ import (
 )
 
 func RedirectPage(w http.ResponseWriter, r *http.Request)  {
-	srvHost := os.Getenv("SHORT_SRV_HOST")
-	if srvHost == "" {
-		srvHost = "localhost"
-	}
+	srvHost := os.Getenv("SRV_HOST")
 
 	//redirectPath := r.URL.Path
 	redirectPath := chi.URLParam(r, "short")

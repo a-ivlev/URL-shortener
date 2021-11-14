@@ -66,7 +66,7 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
-		// чтобы здесь это получить через r.Context().Value("SHORT_SRV_HOST")
+		// чтобы здесь это получить через r.Context().Value("SRV_HOST")
 		srvHost := os.Getenv("SRV_HOST")
 
 		//-------------------------------------------------------------------------------

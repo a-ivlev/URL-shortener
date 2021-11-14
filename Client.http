@@ -15,6 +15,21 @@ Content-Type: application/json
 }
 
 
+
+###
+GET url-shortlink.herokuapp.com
+
+
+### Send POST request with json body
+POST url-shortlink.herokuapp.com
+Content-Type: application/json
+
+{
+  "full_link":"https://yandex.ru/"
+}
+
+
+
 ### Send POST request with json body
 POST http://localhost:8035/create
 Content-Type: application/json
