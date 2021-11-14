@@ -86,10 +86,17 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("srvHost")
 		srvHost := os.Getenv("SRV_HOST")
+		if srvHost == "" {
+			log.Fatal("unknown SRV_HOST = ", srvHost)
+		}
+		srvPort := os.Getenv("SRV_PORT")
+		if srvPort == "" {
+			log.Fatal("unknown SRV_PORT = ", srvPort)
+		}
 
 		//-------------------------------------------------------------------------------
 
-		srv := fmt.Sprintf("%s/create", srvHost)
+		srv := fmt.Sprintf("http://%s:%s/create", srvHost, srvPort)
 
 		client := &http.Client{Timeout: time.Second * 5}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
@@ -122,11 +129,18 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		}
 
 		cliHost := os.Getenv("CLI_HOST")
+		if cliHost == "" {
+			log.Fatal("unknown CLI_HOST = ", cliHost)
+		}
+		cliPort := os.Getenv("PORT")
+		if cliPort == "" {
+			log.Fatal("unknown PORT = ", cliPort)
+		}
 
-		p.ShortLink = fmt.Sprintf("%s/%s", cliHost, shortDB.ShortLink)
+		p.ShortLink = fmt.Sprintf("http://%s:%s/%s", cliHost, cliPort, shortDB.ShortLink)
 		p.FullLink = shortDB.FullLink
 		p.CreatedAt = shortDB.CreatedAt
-		p.StatLink = fmt.Sprintf("%s/stat/%s", cliHost, shortDB.StatLink)
+		p.StatLink = fmt.Sprintf("http://%s:%s/stat/%s", cliHost, cliPort, shortDB.StatLink)
 
 		err = t.ExecuteTemplate(&b, "homePage.html", p)
 		if err != nil {

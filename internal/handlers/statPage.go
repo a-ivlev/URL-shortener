@@ -68,12 +68,18 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("SRV_HOST")
 		srvHost := os.Getenv("SRV_HOST")
-
+		if srvHost == "" {
+			log.Fatal("unknown SRV_HOST = ", srvHost)
+		}
+		srvPort := os.Getenv("SRV_PORT")
+		if srvPort == "" {
+			log.Fatal("unknown SRV_PORT = ", srvPort)
+		}
 		//-------------------------------------------------------------------------------
 
-		srv := fmt.Sprintf("%s/stat", srvHost)
+		srv := fmt.Sprintf("http://%s:%s/stat", srvHost, srvPort)
 
-		client := &http.Client{Timeout: time.Second * 2}
+		client := &http.Client{Timeout: time.Second * 5}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
 		if err != nil {
 			log.Println("func StatPage: error occurred NewRequest: ", err)
@@ -107,11 +113,15 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("SHORT_CLI_HOST")
 		cliHost := os.Getenv("CLI_HOST")
+		if cliHost == "" {
+			log.Fatal("unknown CLI_HOST = ", cliHost)
+		}
+		cliPort := os.Getenv("CLI_HOST")
+		if cliPort == "" {
+			log.Fatal("unknown PORT = ", cliPort)
+		}
 
-		// TODO client statPage statDB.FollowList
-		log.Println("statPage statDB.FollowList", statDB.FollowList)
-
-		p.ShortLink = fmt.Sprintf("%s/%s", cliHost, statDB.ShortLink)
+		p.ShortLink = fmt.Sprintf("http://%s:%s/%s", cliHost, cliPort, statDB.ShortLink)
 		p.TotalCount = statDB.TotalCount
 		p.CreatedAt = statDB.CreatedAt
 		p.FollowList = statDB.FollowList
