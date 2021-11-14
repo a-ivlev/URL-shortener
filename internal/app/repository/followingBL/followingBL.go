@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
-	"log"
 	"time"
 
 	"github.com/google/uuid"
@@ -90,9 +89,6 @@ func (fwl *FollowingBL) GetFollowingList(ctx context.Context, statisticLink stri
 	if err != nil {
 		return nil, err
 	}
-
-	// TODO followingBL func GetFollowingList sliceIn
-	log.Println("followingBL func GetFollowingList sliceIn", sliceIn)
 
 	// TODO Добавить сотрировку. https://golang-blog.blogspot.com/2020/05/sort-in-golang.html
 	//sort.Slice(sliceIn, func(i, j int) bool {

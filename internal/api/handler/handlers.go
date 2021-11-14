@@ -6,7 +6,6 @@ import (
 	"github.com/a-ivlev/URL-shortener/internal/app/redirectBL"
 	"github.com/a-ivlev/URL-shortener/internal/app/repository/followingBL"
 	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
-	"log"
 	"time"
 )
 
@@ -79,9 +78,6 @@ func (h *Handlers) GetStatisticList(ctx context.Context, statisticLink string) (
 	if err != nil {
 		return Statistic{}, fmt.Errorf("error get statistic: %w", err)
 	}
-
-	// TODO handlers GetStatisticList statistic
-	log.Println("handlers GetStatisticList statistic.FollowList", statistic.FollowList)
 
 	return Statistic{
 		ShortLink:  statistic.ShortLink,

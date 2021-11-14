@@ -6,7 +6,6 @@ import (
 	"errors"
 	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
 	"github.com/google/uuid"
-	"log"
 	"strings"
 	"sync"
 )
@@ -67,8 +66,6 @@ func (sdb *shortnerMapDB) SearchShortLink(ctx context.Context, shortLink string)
 	default:
 	}
 
-	// TODO PostgresDB  SearchShortLink shortLink string
-	log.Println("shortLink ", shortLink)
 	for _, elem := range sdb.sht {
 		// if sht.ShortLink == shortLink {
 		if strings.Contains(elem.ShortLink, shortLink) {
