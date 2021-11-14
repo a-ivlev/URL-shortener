@@ -71,13 +71,14 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 		if srvHost == "" {
 			log.Fatal("unknown SRV_HOST = ", srvHost)
 		}
-		srvPort := os.Getenv("SRV_PORT")
-		if srvPort == "" {
-			log.Fatal("unknown SRV_PORT = ", srvPort)
-		}
+		//srvPort := os.Getenv("SRV_PORT")
+		//if srvPort == "" {
+		//	log.Fatal("unknown SRV_PORT = ", srvPort)
+		//}
 		//-------------------------------------------------------------------------------
 
-		srv := fmt.Sprintf("http://%s:%s/stat", srvHost, srvPort)
+		//srv := fmt.Sprintf("http://%s:%s/stat", srvHost, srvPort)
+		srv := fmt.Sprintf("http://%s/stat", srvHost)
 
 		client := &http.Client{Timeout: time.Second * 5}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
@@ -116,12 +117,13 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 		if cliHost == "" {
 			log.Fatal("unknown CLI_HOST = ", cliHost)
 		}
-		cliPort := os.Getenv("CLI_HOST")
-		if cliPort == "" {
-			log.Fatal("unknown PORT = ", cliPort)
-		}
+		//cliPort := os.Getenv("CLI_PORT")
+		//if cliPort == "" {
+		//	log.Fatal("unknown PORT = ", cliPort)
+		//}
 
-		p.ShortLink = fmt.Sprintf("http://%s:%s/%s", cliHost, cliPort, statDB.ShortLink)
+		//p.ShortLink = fmt.Sprintf("http://%s:%s/%s", cliHost, cliPort, statDB.ShortLink)
+		p.ShortLink = fmt.Sprintf("http://%s/%s", cliHost, statDB.ShortLink)
 		p.TotalCount = statDB.TotalCount
 		p.CreatedAt = statDB.CreatedAt
 		p.FollowList = statDB.FollowList
