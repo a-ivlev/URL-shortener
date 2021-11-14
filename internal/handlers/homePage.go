@@ -91,7 +91,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 		srv := fmt.Sprintf("%s/create", srvHost)
 
-		client := &http.Client{Timeout: time.Second * 2}
+		client := &http.Client{Timeout: time.Second * 5}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
 		if err != nil {
 			fmt.Fprintln(os.Stdout, "A error occured NewRequest.")
