@@ -87,13 +87,9 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		// чтобы здесь это получить через r.Context().Value("srvHost")
 		srvHost := os.Getenv("SRV_HOST")
 
-		srvPort := os.Getenv("SRV_PORT")
-		if srvPort == "" {
-			srvPort = "8035"
-		}
 		//-------------------------------------------------------------------------------
 
-		srv := fmt.Sprintf("http://%s:%s/create", srvHost, srvPort)
+		srv := fmt.Sprintf("%s/create", srvHost)
 
 		client := &http.Client{Timeout: time.Second * 2}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
@@ -127,10 +123,10 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 		cliHost := os.Getenv("CLI_HOST")
 
-		p.ShortLink = fmt.Sprintf("http://%s/%s", cliHost, shortDB.ShortLink)
+		p.ShortLink = fmt.Sprintf("%s/%s", cliHost, shortDB.ShortLink)
 		p.FullLink = shortDB.FullLink
 		p.CreatedAt = shortDB.CreatedAt
-		p.StatLink = fmt.Sprintf("http://%s/stat/%s", cliHost, shortDB.StatLink)
+		p.StatLink = fmt.Sprintf("%s/stat/%s", cliHost, shortDB.StatLink)
 
 		err = t.ExecuteTemplate(&b, "homePage.html", p)
 		if err != nil {

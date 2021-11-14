@@ -67,18 +67,11 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("SHORT_SRV_HOST")
-		srvHost := os.Getenv("SHORT_SRV_HOST")
-		if srvHost == "" {
-			srvHost = "localhost"
-		}
+		srvHost := os.Getenv("SRV_HOST")
 
-		srvPort := os.Getenv("SHORT_SRV_PORT")
-		if srvPort == "" {
-			srvPort = "8035"
-		}
 		//-------------------------------------------------------------------------------
 
-		srv := fmt.Sprintf("http://%s:%s/stat", srvHost, srvPort)
+		srv := fmt.Sprintf("%s/stat", srvHost)
 
 		client := &http.Client{Timeout: time.Second * 2}
 		req, err := http.NewRequest(http.MethodPost, srv, bytes.NewBuffer(strJSON))
@@ -113,15 +106,12 @@ func StatPage(w http.ResponseWriter, r *http.Request) {
 
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("SHORT_CLI_HOST")
-		cliHost := os.Getenv("SHORT_CLI_HOST")
-		if cliHost == "" {
-			cliHost = "localhost"
-		}
+		cliHost := os.Getenv("CLI_HOST")
 
 		// TODO client statPage statDB.FollowList
 		log.Println("statPage statDB.FollowList", statDB.FollowList)
 
-		p.ShortLink = fmt.Sprintf("http://%s/%s", cliHost, statDB.ShortLink)
+		p.ShortLink = fmt.Sprintf("%s/%s", cliHost, statDB.ShortLink)
 		p.TotalCount = statDB.TotalCount
 		p.CreatedAt = statDB.CreatedAt
 		p.FollowList = statDB.FollowList

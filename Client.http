@@ -1,10 +1,19 @@
 ### Send POST request with json body
-POST http://YWRtaW46YWRtaW4=@localhost:8035/create
+POST url-shortlink-backend.herokuapp.com/create
 Content-Type: application/json
 
 {
   "full_link":"https://mail.ru/"
 }
+
+###
+POST url-shortlink-backend.herokuapp.com/stat
+Content-Type: application/json
+
+{
+"statistic_link":"835d147844e1400abcec9312e80d87da"
+}
+
 
 ### Send POST request with json body
 POST http://localhost:8035/create
