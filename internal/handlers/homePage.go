@@ -85,12 +85,9 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 		// TODO Хочу эту часть кода перенести в main но незнаю как добавить контекст,
 		// чтобы здесь это получить через r.Context().Value("srvHost")
-		srvHost := os.Getenv("SHORT_SRV_HOST")
-		if srvHost == "" {
-			srvHost = "localhost"
-		}
+		srvHost := os.Getenv("SRV_HOST")
 
-		srvPort := os.Getenv("SHORT_SRV_PORT")
+		srvPort := os.Getenv("SRV_PORT")
 		if srvPort == "" {
 			srvPort = "8035"
 		}
@@ -128,10 +125,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		cliHost := os.Getenv("SHORT_CLI_HOST")
-		if cliHost == "" {
-			cliHost = "localhost"
-		}
+		cliHost := os.Getenv("CLI_HOST")
 
 		p.ShortLink = fmt.Sprintf("http://%s/%s", cliHost, shortDB.ShortLink)
 		p.FullLink = shortDB.FullLink

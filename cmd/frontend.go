@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/a-ivlev/URL-shortener/client/internal/handlers"
+	"github.com/a-ivlev/URL-shortener/internal/handlers"
 	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"
@@ -15,9 +15,9 @@ func main() {
 	r.Get("/{short}", handlers.RedirectPage)
 	r.Get("/stat/{stat}", handlers.StatPage)
 
-	cliPort := os.Getenv("SHORT_CLI_PORT")
+	cliPort := os.Getenv("PORT")
 	if cliPort == "" {
-		cliPort = "8080"
+		log.Fatal("unknown PORT = ", cliPort)
 	}
 
 	err := http.ListenAndServe(":"+cliPort, r)
