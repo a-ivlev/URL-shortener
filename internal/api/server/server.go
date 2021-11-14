@@ -2,8 +2,8 @@ package server
 
 import (
 	"context"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/starter"
+	"github.com/a-ivlev/URL-shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/internal/app/starter"
 	"log"
 	"net/http"
 	"time"

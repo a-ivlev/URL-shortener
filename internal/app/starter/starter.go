@@ -1,8 +1,8 @@
 package starter
 
 import (
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
 	"context"
+	"github.com/a-ivlev/URL-shortener/internal/app/redirectBL"
 	"sync"
 )
 

@@ -2,7 +2,7 @@ package chiRouter
 
 import (
 	"context"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/api/handler"
+	"github.com/a-ivlev/URL-shortener/internal/api/handler"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
 	"log"

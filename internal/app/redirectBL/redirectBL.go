@@ -1,10 +1,10 @@
 package redirectBL
 
 import (
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/shortenerBL"
 	"context"
 	"fmt"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/followingBL"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
 	"time"
 )
 
@@ -37,13 +37,13 @@ func (r *Redirect) CreateShortLink(ctx context.Context, short shortenerBL.Shorte
 }
 
 func (r *Redirect) GetFullLink(ctx context.Context, short shortenerBL.Shortener) (*shortenerBL.Shortener, error) {
-	ipaddres := ctx.Value("IP_address").(string)
+	ipaddr := ctx.Value("IP_address").(string)
 	getShortener, err := r.shortBL.GetFullLink(ctx, short)
 	if err != nil {
 		return nil, fmt.Errorf("redirectBL GetFullLink error: %w", err)
 	}
 
-	getFollowing, err := r.followBL.SearchFollowing(ctx, getShortener.StatLink, ipaddres)
+	getFollowing, err := r.followBL.SearchFollowing(ctx, getShortener.StatLink, ipaddr)
 	if err != nil {
 		getFollowing, err = r.followBL.CreateFollowing(ctx, getShortener)
 		if err != nil {
@@ -51,7 +51,7 @@ func (r *Redirect) GetFullLink(ctx context.Context, short shortenerBL.Shortener)
 		}
 	}
 
-	getFollowing.IPaddress = ipaddres
+	getFollowing.IPaddress = ipaddr
 	getFollowing.Count += 1
 	getFollowing.FollowLinkAt = time.Now()
 

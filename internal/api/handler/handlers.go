@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/redirectBL"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/shortenerBL"
 	"context"
 	"fmt"
+	"github.com/a-ivlev/URL-shortener/internal/app/redirectBL"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/followingBL"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
 	"log"
 	"time"
 )

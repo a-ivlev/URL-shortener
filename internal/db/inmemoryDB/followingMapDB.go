@@ -1,10 +1,10 @@
 package inmemoryDB
 
 import (
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/followingBL"
 	"context"
 	"database/sql"
 	"errors"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/followingBL"
 	"github.com/google/uuid"
 	"strings"
 	"sync"

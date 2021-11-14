@@ -1,8 +1,8 @@
 package shortenerBL_test
 
 import (
-	"github.com/a-ivlev/URL-shortener/shortener/internal/app/repository/shortenerBL"
 	"context"
+	"github.com/a-ivlev/URL-shortener/internal/app/repository/shortenerBL"
 	"github.com/google/uuid"
 	"testing"
 )
